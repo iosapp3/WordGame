@@ -59,6 +59,36 @@ class PuzzleGenerator {
         }
     }
     
+    func getWord(startx: Int, starty: Int, endx: Int, endy: Int) -> String {
+        var word = ""
+        if startx == endx && starty != endy {
+            let dy = (starty<endy) ? 1 : -1
+            for i in 0...abs(starty-endy) {
+                word.append(grid[starty + i*dy][startx])
+            }
+        } else if starty == endy && startx != endx {
+            let dx = (startx<endx) ? 1 : -1
+            for i in 0...abs(startx-endx) {
+                word.append(grid[starty][startx + i*dx])
+            }
+        } else if abs(starty-endy) == abs(startx-endx) {
+            var (dx, dy) = (0,0)
+            if startx < endx && starty < endy {
+                (dx, dy) = (1,1)
+            } else if startx > endx && starty > endy {
+                (dx, dy) = (-1,-1)
+            } else if startx < endx && starty > endy {
+                (dx, dy) = (1,-1)
+            } else if startx > endx && starty < endy {
+                (dx, dy) = (-1,1)
+            }
+            for i in 0...abs(starty-endy) {
+                word.append(grid[starty + i * dy][startx + i * dx])
+            }
+        }
+        return word
+    }
+    
     private func fill() {
         let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         for i in 0 ... self.rows-1 {

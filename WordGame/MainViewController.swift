@@ -97,34 +97,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
         return (indexPath.row % rows, indexPath.row/cols)
     }
     
-    func checkWord(x0: Int, y0: Int, x1: Int, y1: Int) -> String {
-        var word = ""
-        if x0 == x1 && y0 != y1 {
-            let dy = (y0<y1) ? 1 : -1
-            for i in 0...abs(y0-y1) {
-                word.append(wordGrid[y0 + i*dy][x0])
-            }
-        } else if y0 == y1 && x0 != x1 {
-            let dx = (x0<x1) ? 1 : -1
-            for i in 0...abs(x0-x1) {
-                word.append(wordGrid[y0][x0 + i*dx])
-            }
-        } else if abs(y0-y1) == abs(x0-x1) {
-            var (dx, dy) = (0,0)
-            if x0 < x1 && y0 < y1 {
-                (dx, dy) = (1,1)
-            } else if x0 > x1 && y0 > y1 {
-                (dx, dy) = (-1,-1)
-            } else if x0 < x1 && y0 > y1 {
-                (dx, dy) = (1,-1)
-            } else if x0 > x1 && y0 < y1 {
-                (dx, dy) = (-1,1)
-            }
-            for i in 0...abs(y0-y1) {
-                word.append(wordGrid[y0 + i * dy][x0 + i * dx])
-            }
-        }
-        return word
+    func isOnLine(x0: Int, y0: Int, x1: Int, y1: Int, x2: Int, y2: Int) -> Bool {
+        return ((y1-y0)*(x2-x0) - (x1-x0)*(y2-y0)) == 0
     }
     
     @IBAction func reloadGrid(_ sender: Any) {
@@ -170,10 +144,18 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
                 }
             }
         case .ended:
-            let (x0, y0) = (selectedCells[0].row % rows, selectedCells[0].row/cols)
-            let (x1, y1) = (selectedCells.last!.row % rows, selectedCells.last!.row/cols)
-            let answer = checkWord(x0: x0, y0: y0, x1: x1, y1: y1)
+            let (x0, y0) = indexPathToXY(indexPath: selectedCells[0])
+            let (x2, y2) = indexPathToXY(indexPath: selectedCells.last!)
+            let answer = grid.getWord(startx: x0, starty: y0, endx: x2, endy: y2)
             if words.contains(answer) {
+                for i in 1...selectedCells.endIndex - 2 {
+                    let (x1,y1) = indexPathToXY(indexPath: selectedCells[i])
+                    if isOnLine(x0: x0, y0: y0, x1: x1, y1: y1, x2: x2, y2: y2) {
+                        wordGridCollectionView.selectItem(at: selectedCells[i], animated: true, scrollPosition: .centeredVertically)
+                    } else {
+                        wordGridCollectionView.deselectItem(at: selectedCells[i], animated: true)
+                    }
+                }
                 selectionLineView.correctSelectionLine()
                 wordsCollectionView.selectCell(target: answer)
                 correct += 1
