@@ -1,24 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="WordGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yRl-aK-CqK" customClass="WordCollectionView" customModule="WordGame" customModuleProvider="target">
+                                <rect key="frame" x="29" y="117.5" width="356" height="107.5"/>
+                                <color key="backgroundColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cVf-bb-11R">
+                                    <size key="itemSize" width="101" height="33"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wordCell" id="V83-2B-SyM" customClass="WordViewCell" customModule="WordGame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bxW-Fn-X35">
+                                            <rect key="frame" x="0.0" y="0.0" width="101" height="33"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P04-Hf-VFP">
+                                                    <rect key="frame" x="31" y="7.5" width="39" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="P04-Hf-VFP" firstAttribute="centerX" secondItem="bxW-Fn-X35" secondAttribute="centerX" id="Xey-Kb-ayV"/>
+                                                <constraint firstItem="P04-Hf-VFP" firstAttribute="centerY" secondItem="bxW-Fn-X35" secondAttribute="centerY" id="c77-gq-hUO"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="101" height="33"/>
+                                        <connections>
+                                            <outlet property="cellLabel" destination="P04-Hf-VFP" id="8TW-G0-peQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kiz-hS-a3c">
+                                <rect key="frame" x="10" y="240" width="394" height="486"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0rE-je-aa8">
+                                    <size key="itemSize" width="20" height="20"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <view key="backgroundView" contentMode="scaleToFill" id="uaV-LF-9ff" customClass="SelectionLineView" customModule="WordGame" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="394" height="486"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </view>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="nhd-1H-mdo" customClass="CharacterViewCell" customModule="WordGame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nhm-xg-74A">
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abj-Br-R7o">
+                                                    <rect key="frame" x="-8.5" y="2" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Abj-Br-R7o" firstAttribute="centerY" secondItem="nhm-xg-74A" secondAttribute="centerY" id="fvf-3s-QY6"/>
+                                                <constraint firstItem="Abj-Br-R7o" firstAttribute="centerX" secondItem="nhm-xg-74A" secondAttribute="centerX" id="wjd-6n-GJn"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="25" height="25"/>
+                                        <connections>
+                                            <outlet property="characterLabel" destination="Abj-Br-R7o" id="ibb-Rr-et6"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="zKS-nI-bPz"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0To-jL-dl9"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aot-MB-5is">
+                                <rect key="frame" x="17.5" y="762" width="103.5" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TUd-y0-enw"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Tips" image="lightbulb.fill" catalog="system">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="getTip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RIn-re-gwN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7N-LL-c5K">
+                                <rect key="frame" x="155.5" y="762" width="103.5" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ucg-j9-cYc"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Clear" image="clear.fill" catalog="system">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearGrid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rdJ-wp-g1T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyq-mx-hOe">
+                                <rect key="frame" x="293.5" y="762" width="103.5" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pkE-aU-p3n"/>
+                                </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Reset" image="arrow.clockwise.circle.fill" catalog="system">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="reloadGrid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lU3-Yo-pQP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Word Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgE-Dt-QfM">
+                                <rect key="frame" x="103" y="74" width="208" height="33.5"/>
+                                <fontDescription key="fontDescription" name="AcademyEngravedLetPlain" family="Academy Engraved LET" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="yRl-aK-CqK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="29" id="08i-ZQ-umY"/>
+                            <constraint firstItem="w7N-LL-c5K" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="2/8" id="2UE-N3-rkP"/>
+                            <constraint firstItem="bgE-Dt-QfM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="7lw-Xj-WdM"/>
+                            <constraint firstItem="bgE-Dt-QfM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7nq-sp-wvr"/>
+                            <constraint firstItem="Aot-MB-5is" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" multiplier="1/3" id="9MC-Xx-nQi"/>
+                            <constraint firstItem="Eyq-mx-hOe" firstAttribute="centerY" secondItem="w7N-LL-c5K" secondAttribute="centerY" id="9Te-eo-T9K"/>
+                            <constraint firstItem="Kiz-hS-a3c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="JAB-Pt-SFb"/>
+                            <constraint firstItem="Eyq-mx-hOe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" multiplier="5/3" id="L1M-4A-x3T"/>
+                            <constraint firstItem="Eyq-mx-hOe" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="2/8" id="Ljy-9i-GY4"/>
+                            <constraint firstItem="Aot-MB-5is" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="2/8" id="PvM-gF-c9w"/>
+                            <constraint firstItem="yRl-aK-CqK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ruu-7N-KCf"/>
+                            <constraint firstItem="Kiz-hS-a3c" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="30" id="TKw-Nl-hHL"/>
+                            <constraint firstItem="Aot-MB-5is" firstAttribute="centerY" secondItem="w7N-LL-c5K" secondAttribute="centerY" id="Tfg-1p-HE9"/>
+                            <constraint firstItem="w7N-LL-c5K" firstAttribute="top" secondItem="Kiz-hS-a3c" secondAttribute="bottom" constant="36" id="Wub-nZ-UHM"/>
+                            <constraint firstItem="Kiz-hS-a3c" firstAttribute="top" secondItem="yRl-aK-CqK" secondAttribute="bottom" constant="15" id="dEK-k8-Dmk"/>
+                            <constraint firstItem="yRl-aK-CqK" firstAttribute="top" secondItem="bgE-Dt-QfM" secondAttribute="bottom" constant="10" id="gZF-SC-Z4q"/>
+                            <constraint firstItem="Kiz-hS-a3c" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jTB-KG-hrf"/>
+                            <constraint firstItem="w7N-LL-c5K" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rgZ-Aq-WJP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="w7N-LL-c5K" secondAttribute="bottom" constant="70" id="wwy-a0-8kW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="clearButton" destination="w7N-LL-c5K" id="dcJ-tR-oxa"/>
+                        <outlet property="resetButton" destination="Eyq-mx-hOe" id="DeM-hS-Cbl"/>
+                        <outlet property="selectionLineView" destination="uaV-LF-9ff" id="AAg-DE-gcx"/>
+                        <outlet property="tipsButton" destination="Aot-MB-5is" id="58S-gv-LrY"/>
+                        <outlet property="wordGridCollectionView" destination="Kiz-hS-a3c" id="RfI-ZV-7zF"/>
+                        <outlet property="wordsCollectionView" destination="yRl-aK-CqK" id="Nk5-2q-9Pa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.clockwise.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="clear.fill" catalog="system" width="128" height="114"/>
+        <image name="lightbulb.fill" catalog="system" width="113" height="128"/>
+    </resources>
 </document>
