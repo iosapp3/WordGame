@@ -148,7 +148,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource, UICollec
             let (x2, y2) = indexPathToXY(indexPath: selectedCells.last!)
             let answer = grid.getWord(startx: x0, starty: y0, endx: x2, endy: y2)
             if words.contains(answer) {
-                for i in 1...selectedCells.endIndex - 2 {
+                for i in 0...selectedCells.endIndex - 2 {
                     let (x1,y1) = indexPathToXY(indexPath: selectedCells[i])
                     if isOnLine(x0: x0, y0: y0, x1: x1, y1: y1, x2: x2, y2: y2) {
                         wordGridCollectionView.selectItem(at: selectedCells[i], animated: true, scrollPosition: .centeredVertically)
